@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #f4f4f4;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: rgb(255, 255, 255);
+    padding: 1.5em 0;
+    border-bottom-color:  #f0f0f0;
+    border-bottom-style: solid;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.logo {
+    font-weight: bold;
+    color: rgb(238, 129, 12);
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+}
+
+nav ul a {
+    
+    color:black;
+}
+
+.profile-top{
+    border-radius: 99%;
+    width: 25px;
+    height: 25px;
+    background-color:    rgb(233, 233, 233);
+}
+/* nav ul a:hover {
+    background-color: rgb(20, 20, 89);
+} */
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
