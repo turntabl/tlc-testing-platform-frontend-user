@@ -1,29 +1,33 @@
-  body {
-    background-color: lightcyan;
-  }
-  .main .rules {
-    padding: 20px;
-    border: 2px solid lightgray;
-  }
-  .main .rules p {
-    font-size: 20px;
-    /* font-weight: bold; */
-  }
+body {
+  background-color: lightcyan;
+}
+.main .rules {
+  padding: 20px;
+  border: 2px solid lightgray;
+}
+.main .rules p {
+  font-size: 20px;
+  /* font-weight: bold; */
+}
 
-  .main-question-div {
-    border: 2px solid lightgrey;
-    padding: 10px;
-  }
-  .main-question-div p {
-    font-size: 20px;
-  }
-  .main-question-div .options {
-    border: 2px solid lightgrey;
-    padding: 10px;
-    background-color: white;
-  }
+.main-question-div {
+  border: 2px solid lightgrey;
+  padding: 10px;
+}
+.main-question-div p {
+  font-size: 20px;
+}
+.main-question-div .options {
+  border: 2px solid lightgrey;
+  padding: 10px;
+  background-color: white;
+}
 
-  .main-question-div .options label {
-    font-size: 18px;
-    margin-right: 30px;
-  }
+.main-question-div .options label {
+  font-size: 18px;
+  margin-right: 30px;
+}
+.submit-button {
+  position: relative;
+  bottom: 20px;
+}
