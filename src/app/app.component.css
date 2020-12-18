@@ -1,41 +1,46 @@
 nav ul {
-	padding: 0;
-    margin: 0;
-	list-style: none;
-	}
-	
-nav ul li {
-	display:inline-block;
-	}
-
-nav a {
-	display:block;
-	padding:0 10px;	
-	font-size:14px;
-	line-height: 30px;
-	text-decoration:none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-nav li ul a:hover { 
-  background-color:teal; 
+nav ul li {
+  display: inline-block;
+}
+
+nav a {
+  display: block;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 30px;
+  text-decoration: none;
+}
+
+nav li ul a:hover {
+  background-color: teal;
   color: #f4f4f4;
+}
+
+.subnav {
+  position: relative;
+  left: 345px;
 }
 
 /* Hide Dropdowns by Default */
 nav ul ul {
-	display: none;
-	position: absolute; 
+  display: none;
+  position: absolute;
 }
-	
+
 /* Display Dropdowns on Hover */
 nav ul li:hover > ul {
-	display:inherit;
+  display: inherit;
 }
-	
+
 /* Fisrt Tier Dropdown */
 nav ul ul li {
-	width:80px;
-	float:none;
-	display:list-item;
-	position: relative;
+  width: 80px;
+  float: none;
+  display: list-item;
+  position: relative;
 }
