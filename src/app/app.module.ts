@@ -7,6 +7,9 @@ import { TakeTestComponent } from './pages/take-test/take-test.component';
 import { ViewResultComponent } from './pages/view-result/view-result.component';
 import { ReviewTestComponent } from './pages/review-test/review-test.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { TestUnavailableComponent } from './pages/test-unavailable/test-unavailable.component';
+import { SuccessfullySubmittedComponent } from './pages/successfully-submitted/successfully-submitted.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     ViewResultComponent,
     ReviewTestComponent,
     PageNotFoundComponent,
+    UserProfileComponent,
+    TestUnavailableComponent,
+    SuccessfullySubmittedComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
