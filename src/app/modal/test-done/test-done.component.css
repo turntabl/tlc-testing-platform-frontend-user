@@ -1,0 +1,10 @@
+.modal-body .content {
+  background-color: rgb(244, 253, 253);
+  border: 2px solid lightgray;
+  padding: 30px;
+}
+
+.modal-body .content p {
+  font-size: 25px;
+  font-weight: bold;
+}

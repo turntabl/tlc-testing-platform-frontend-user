@@ -1,0 +1,16 @@
+.content {
+  background-color: rgb(244, 253, 253);
+  border: 2px solid lightgray;
+  padding: 70px;
+  margin-top: 100px;
+}
+
+.content p {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.row .button button {
+  position: relative;
+  left: 10px;
+}
