@@ -1,0 +1,15 @@
+.profile {
+  background-color: white;
+  padding: 60px;
+  border: 2px solid lightgray;
+}
+
+.user-details {
+  margin-top: -180px;
+}
+
+.user-details p {
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid lightgray;
+}
