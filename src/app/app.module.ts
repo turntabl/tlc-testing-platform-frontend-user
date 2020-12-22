@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { TestUnavailableComponent } from './pages/test-unavailable/test-unavailable.component';
 import { SuccessfullySubmittedComponent } from './pages/successfully-submitted/successfully-submitted.component';
+import { TestDoneComponent } from './modal/test-done/test-done.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,10 @@ import { SuccessfullySubmittedComponent } from './pages/successfully-submitted/s
     UserProfileComponent,
     TestUnavailableComponent,
     SuccessfullySubmittedComponent,
+    TestDoneComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
+  entryComponents: [TestDoneComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
