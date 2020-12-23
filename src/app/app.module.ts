@@ -12,6 +12,7 @@ import { TestUnavailableComponent } from './pages/test-unavailable/test-unavaila
 import { SuccessfullySubmittedComponent } from './pages/successfully-submitted/successfully-submitted.component';
 import { TestDoneComponent } from './modal/test-done/test-done.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     TestUnavailableComponent,
     SuccessfullySubmittedComponent,
     TestDoneComponent,
+    UserDashboardComponent,
   ],
   imports: [
     BrowserModule, 

@@ -1,0 +1,45 @@
+.content {
+  background-color: rgb(235, 236, 236);
+  border: 2px solid lightgrey;
+  padding: 50px;
+}
+
+.test-info {
+  background-color: #dad9a1;
+  padding: 30px;
+  border-radius: 7px;
+}
+
+.test-info p {
+  font-size: 30px;
+  font-weight: bold;
+  color: #5c5b2d;
+  margin-top: -20px;
+}
+
+.test-info-1 {
+  background-color: #99d8d8;
+  padding: 30px;
+  margin-left: 40px;
+  border-radius: 7px;
+}
+.test-info-1 p {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1d5757;
+  margin-top: -20px;
+}
+
+.incoming-test {
+  background-color: rgb(218, 155, 176);
+  padding: 30px;
+  margin-left: 57px;
+  border-radius: 10px;
+}
+
+.incoming-test p {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(97, 61, 73);
+  margin-top: -25px;
+}
