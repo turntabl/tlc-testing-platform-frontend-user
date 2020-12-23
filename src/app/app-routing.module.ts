@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { TestUnavailableComponent } from './pages/test-unavailable/test-unavailable.component';
 import { SuccessfullySubmittedComponent } from './pages/successfully-submitted/successfully-submitted.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
   { path: 'take-test', component: TakeTestComponent },
@@ -15,6 +16,8 @@ const routes: Routes = [
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'test-unavailable', component: TestUnavailableComponent },
   { path: 'test-submitted', component: SuccessfullySubmittedComponent },
+  { path: 'user-dashboard', component: UserDashboardComponent },
+  { path: '', redirectTo: '/user-dashboard', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 
