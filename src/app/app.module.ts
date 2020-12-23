@@ -11,6 +11,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { TestUnavailableComponent } from './pages/test-unavailable/test-unavailable.component';
 import { SuccessfullySubmittedComponent } from './pages/successfully-submitted/successfully-submitted.component';
 import { TestDoneComponent } from './modal/test-done/test-done.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,12 @@ import { TestDoneComponent } from './modal/test-done/test-done.component';
     SuccessfullySubmittedComponent,
     TestDoneComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  imports: [
+    BrowserModule, 
+    AppRoutingModule, 
+    NgbModule,
+    HttpClientModule
+  ],
   entryComponents: [TestDoneComponent],
   providers: [],
   bootstrap: [AppComponent],

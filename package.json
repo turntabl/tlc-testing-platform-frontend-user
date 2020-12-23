@@ -2,7 +2,7 @@
   "name": "tlc-system-frontend-user",
   "version": "0.0.0",
   "scripts": {
-    "heroku-prebuild":"cd tlc-system-frontend-user && npm install",
+    "heroku-prebuild": "cd tlc-system-frontend-user && npm install",
     "heroku-postbuild": "ng build --aot --prod",
     "ng": "ng",
     "start": "node server.js",
