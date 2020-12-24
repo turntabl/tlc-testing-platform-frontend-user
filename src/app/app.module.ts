@@ -13,6 +13,7 @@ import { SuccessfullySubmittedComponent } from './pages/successfully-submitted/s
 import { TestDoneComponent } from './modal/test-done/test-done.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     BrowserModule, 
     AppRoutingModule, 
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [TestDoneComponent],
   providers: [],
