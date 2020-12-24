@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { StudentAnswer } from 'src/app/model/StudentAnswer';
 import { Test } from 'src/app/model/Test';
@@ -12,11 +13,16 @@ import { TestDoneComponent } from '../../modal/test-done/test-done.component';
   styleUrls: ['./take-test.component.css'],
 })
 export class TakeTestComponent implements OnInit {
+  questionForm : FormGroup = new FormGroup({
+    student_id: new FormControl(''),
+    test_id:new FormControl(''),
+    answers:new FormArray([])
+  })
   studentAnswer:StudentAnswer = new StudentAnswer;
   testDetails:Test= new Test;
   questions:TestQuestion[]=[];
   test_id:number=2;
-  constructor(public modalService: NgbModal, private testService:TestService) {}
+  constructor(public modalService: NgbModal, private testService:TestService, private fb:FormBuilder) {}
 
   ngOnInit(): void {
     this.getTestDetails();
@@ -53,5 +59,23 @@ export class TakeTestComponent implements OnInit {
   captureTestDetails():void{
     this.studentAnswer.student_id = "72447277-31ef-42a3-a376-24562f69ce69";
     this.studentAnswer.test_id = this.test_id;
+  }
+
+  addAnswer(selected_option:number, question_id:number, answer:string){
+    this.answers.push(this.fb.group({
+      question_id:new FormControl(question_id),
+      option_id: new FormControl(selected_option),
+      answer: new FormControl(answer)
+    }))
+  }
+
+  get answers(){
+    return this.questionForm.get('answers') as FormArray;
+  }
+
+  submit(){
+    this.questionForm.controls.student_id.setValue('72447277-31ef-42a3-a376-24562f69ce69');
+    this.questionForm.controls.test_id.setValue('2');
+    console.log(this.questionForm.value)
   }
 }
