@@ -51,14 +51,9 @@ export class TakeTestComponent implements OnInit {
     });
   }
 
-  onAnswerSelectionChange(selected_option:number, question_id:number): void {
-   console.log(selected_option);
-   console.log(question_id);
-}
-
   captureTestDetails():void{
-    this.studentAnswer.student_id = "72447277-31ef-42a3-a376-24562f69ce69";
-    this.studentAnswer.test_id = this.test_id;
+   this.questionForm.get('student_id')?.setValue("72447277-31ef-42a3-a376-24562f69ce69");
+   this.questionForm.get('test_id')?.setValue(2);
   }
 
   addAnswer(selected_option:number, question_id:number, answer:string){
@@ -74,8 +69,8 @@ export class TakeTestComponent implements OnInit {
   }
 
   submit(){
-    this.questionForm.controls.student_id.setValue('72447277-31ef-42a3-a376-24562f69ce69');
-    this.questionForm.controls.test_id.setValue('2');
     console.log(this.questionForm.value)
   }
+
+  
 }
