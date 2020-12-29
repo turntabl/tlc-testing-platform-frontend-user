@@ -57,7 +57,7 @@ export class TakeTestComponent implements OnInit {
   }
 
   addAnswer(selected_option:number, question_id:number, answer:string){
-    this.answers.removeAt(this.answers.value.findIndex(property => property.question_id === question_id));
+    this.answers.removeAt(this.answers.value.findIndex((property:{question_id:number}) => property.question_id === question_id));
     this.answers.push(this.fb.group({
       question_id:new FormControl(question_id),
       option_id: new FormControl(selected_option),
