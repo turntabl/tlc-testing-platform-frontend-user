@@ -11,6 +11,8 @@
 
 <div [formGroup]="questionForm">
   <!-- Questions div -->
+  <input type="text" formControlName="student_id" hidden>
+  <input type="text" formControlName="test_id" hidden>
   <div class="main-question-div mt-5 mb-5" *ngFor="let question of questions; let i=index;">
     <div class="questions">
       <p>
@@ -26,19 +28,13 @@
             <input
               class="form-check-input"
               type="radio"
-              name="inlineRadioOptions"
-              [value]="option.optionId"
+              name="{{question.questionId}}"
               (change)="addAnswer(option.optionId, question.questionId, option.option)"
             />
             <label class="form-check-label">{{option.option}}</label>
           </div>
         </div>
-
-
-
-
   </div>
-
 </div>
 
   <div class="offset-5 submit-button">
