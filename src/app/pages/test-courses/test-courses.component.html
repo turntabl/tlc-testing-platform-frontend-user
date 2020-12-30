@@ -23,7 +23,7 @@
               {{test.test_title}}
             </td>
             <td>
-              <button class="btn btn-outline-info btn-sm" [routerLink]="['/take-test']"  [queryParams]="{id : test.test_id}" fragment="questions"  >
+              <button class="btn btn-outline-info btn-sm" *ngIf="checkIfStudentHasTakenTest(test.test_id)" [routerLink]="['/take-test']"  [queryParams]="{id : test.test_id}" fragment="questions" >
                 Take Test
               </button>
             </td>

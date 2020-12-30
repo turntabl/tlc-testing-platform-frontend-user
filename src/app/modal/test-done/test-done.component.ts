@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { StudentAnswerService } from 'src/app/service/student-answer.service';
 
 @Component({
   selector: 'app-test-done',
@@ -7,7 +8,17 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./test-done.component.css'],
 })
 export class TestDoneComponent implements OnInit {
-  constructor(public activeModal: NgbActiveModal) {}
+  @Input() data:any;
+  
+  constructor(public activeModal: NgbActiveModal, private studentAnswerService:StudentAnswerService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.data)
+  }
+
+  submit(){
+    this.studentAnswerService.postAnswer(this.data).subscribe((res)=>{
+      console.log(res)
+    });
+  }
 }

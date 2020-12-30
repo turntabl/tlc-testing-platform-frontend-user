@@ -15,6 +15,10 @@ export class StudentAnswerService extends BaseUrl  {
   }
 
   public postAnswer(answer:StudentAnswer):Observable<any>{
-      return this.httpClient.post<StudentAnswer>(`http://localhost:8080/api/test-answer`, answer);
+      return this.httpClient.post<StudentAnswer>(`${this.baseURL}/api/test-answer`, answer);
+  }
+
+  public getAnswerByStudentIdAndTestId(student_id:string, test_id:number):Observable<any>{
+    return this.httpClient.get<any>(`${this.baseURL}/api/answers/get-by-student/${test_id}/${student_id}`);
   }
 }
