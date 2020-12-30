@@ -3,13 +3,13 @@
     <h4 class="text-info text-center">{{testDetails.test_title}}</h4>
   </div>
 
-  <div class="rules mt-3 text-center" *ngIf="testDetails.test_rules">
+  <div class="rules mt-3 text-center" *ngIf="testDetails.test_rules && !isStudentTestTaken">
     <p>
       {{testDetails.test_rules}}
     </p>
   </div>
 
-<div [formGroup]="questionForm">
+<div [formGroup]="questionForm" *ngIf="!isStudentTestTaken || isTestTaken; else TestTaken">
   <!-- Questions div -->
   <input type="text" formControlName="student_id" hidden>
   <input type="text" formControlName="test_id" hidden>
@@ -37,7 +37,13 @@
   </div>
 </div>
 
-  <div class="offset-5 submit-button">
+<ng-template #TestTaken>
+  <div id="box-three">
+    <p>Test Taken!</p>
+  </div>
+</ng-template>
+
+  <div class="offset-5 submit-button" *ngIf="!isStudentTestTaken || isTestTaken">
     <button class="btn btn-outline-info" (click)="openTestDoneModal()">
       Submit Test
     </button>

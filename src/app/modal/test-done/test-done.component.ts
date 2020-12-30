@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { LocalDataService } from 'src/app/service/local-data.service';
 import { StudentAnswerService } from 'src/app/service/student-answer.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { StudentAnswerService } from 'src/app/service/student-answer.service';
 export class TestDoneComponent implements OnInit {
   @Input() data:any;
   
-  constructor(public activeModal: NgbActiveModal, private studentAnswerService:StudentAnswerService) {}
+  constructor(public activeModal: NgbActiveModal, private studentAnswerService:StudentAnswerService, private localService:LocalDataService) {}
 
   ngOnInit(): void {
     console.log(this.data)
@@ -20,5 +21,7 @@ export class TestDoneComponent implements OnInit {
     this.studentAnswerService.postAnswer(this.data).subscribe((res)=>{
       console.log(res)
     });
+
+    this.localService.testTaken = true;
   }
 }

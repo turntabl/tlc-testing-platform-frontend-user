@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Test } from 'src/app/model/Test';
 import { TestQuestion } from 'src/app/model/TestQuestion';
+import { LocalDataService } from 'src/app/service/local-data.service';
 import { StudentAnswerService } from 'src/app/service/student-answer.service';
 import { TestService } from 'src/app/service/test.service';
 import { TestDoneComponent } from '../../modal/test-done/test-done.component';
@@ -14,6 +15,7 @@ import { TestDoneComponent } from '../../modal/test-done/test-done.component';
   styleUrls: ['./take-test.component.css'],
 })
 export class TakeTestComponent implements OnInit {
+  isStudentTestTaken:boolean=false;
   questionForm : FormGroup = new FormGroup({
     student_id: new FormControl(''),
     test_id:new FormControl(''),
@@ -22,13 +24,17 @@ export class TakeTestComponent implements OnInit {
   testDetails:Test= new Test;
   questions:TestQuestion[]=[];
   test_id:number=0;
-  constructor(public modalService: NgbModal, private testService:TestService, private fb:FormBuilder, private route: ActivatedRoute, private studentAnswerService:StudentAnswerService) {}
+  constructor(public modalService: NgbModal, private testService:TestService, private fb:FormBuilder, private route: ActivatedRoute, private studentAnswerService:StudentAnswerService, private localService:LocalDataService) {}
 
   ngOnInit(): void {
     this.test_id = +<string>this.route.snapshot.queryParamMap.get('id');
-    this.getTestDetails();
-    this.getTestQuestions();
-    this.captureTestDetails();
+    this.checkIfStudentHasTakenTest(this.test_id);
+    console.log(this.isTestTaken + ' ' + this.isStudentTestTaken);
+    if(!this.isTestTaken || !this.isStudentTestTaken){
+      this.getTestDetails();
+      this.getTestQuestions();
+      this.captureTestDetails();
+    }
   }
 
   openTestDoneModal() {
@@ -59,7 +65,7 @@ export class TakeTestComponent implements OnInit {
   }
 
   captureTestDetails():void{
-   this.questionForm.get('student_id')?.setValue("79fc276e-3b13-4fd8-851e-aa22563ac7a8");
+   this.questionForm.get('student_id')?.setValue("0675348c-8243-4a3b-8ec3-f9407817f447");
    this.questionForm.get('test_id')?.setValue(this.test_id);
   }
 
@@ -79,5 +85,19 @@ export class TakeTestComponent implements OnInit {
 
   get answers(){
     return this.questionForm.get('answers') as FormArray;
+  }
+
+  checkIfStudentHasTakenTest(test_id:number){
+     this.studentAnswerService.getAnswerByStudentIdAndTestId("0675348c-8243-4a3b-8ec3-f9407817f447",test_id).subscribe(
+       (res)=>{
+         if(res.length > 1){
+           this.isStudentTestTaken = true;        
+         }
+       }
+     );
+  }
+
+  get isTestTaken(){
+    return this.localService.testTaken;
   }
 }

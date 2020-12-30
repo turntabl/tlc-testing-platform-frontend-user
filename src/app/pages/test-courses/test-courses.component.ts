@@ -23,17 +23,4 @@ export class TestCoursesComponent implements OnInit {
       this.tests = response;
     });
   }
-
-   checkIfStudentHasTakenTest(test_id:number):boolean{
-     let isStudentTestTaken:boolean=false;
-      this.studentAnswerService.getAnswerByStudentIdAndTestId("0675348c-8243-4a3b-8ec3-f9407817f447",test_id).subscribe(
-        (res)=>{
-          if(res.length > 1){
-            isStudentTestTaken = true;        
-          }
-        }
-      );
-
-      return isStudentTestTaken;
-   }
 }
