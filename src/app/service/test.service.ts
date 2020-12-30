@@ -17,7 +17,12 @@ export class TestService extends BaseUrl {
     return this.httpClient.get<any>((`${this.baseURL}/api/test/get/${test_id}`));
   }
 
+  public getAllTests():Observable<Test[]>{
+    return this.httpClient.get<any>(`${this.baseURL}/api/test/all`);
+  }
+
   public getTestQuestionById(test_id:number):Observable<TestQuestion[]>{
     return this.httpClient.get<any>((`${this.baseURL}/api/question/${test_id}`));
   }
+
 }

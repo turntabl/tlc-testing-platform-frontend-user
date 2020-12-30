@@ -1,0 +1,8 @@
+body {
+    background-color: lightcyan;
+  }
+  .main-table {
+    padding: 30px;
+    border: 1px solid lightgrey;
+    background-color: white;
+  }

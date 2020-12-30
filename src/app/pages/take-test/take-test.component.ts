@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Answer } from 'src/app/model/Answer';
 import { StudentAnswer } from 'src/app/model/StudentAnswer';
 import { Test } from 'src/app/model/Test';
 import { TestQuestion } from 'src/app/model/TestQuestion';
+import { StudentAnswerService } from 'src/app/service/student-answer.service';
 import { TestService } from 'src/app/service/test.service';
 import { TestDoneComponent } from '../../modal/test-done/test-done.component';
 
@@ -21,10 +24,11 @@ export class TakeTestComponent implements OnInit {
   studentAnswer:StudentAnswer = new StudentAnswer;
   testDetails:Test= new Test;
   questions:TestQuestion[]=[];
-  test_id:number=2;
-  constructor(public modalService: NgbModal, private testService:TestService, private fb:FormBuilder) {}
+  test_id:number=0;
+  constructor(public modalService: NgbModal, private testService:TestService, private fb:FormBuilder, private route: ActivatedRoute, private studentAnswerService:StudentAnswerService) {}
 
   ngOnInit(): void {
+    this.test_id = +<string>this.route.snapshot.queryParamMap.get('id');
     this.getTestDetails();
     this.getTestQuestions();
     this.captureTestDetails();
@@ -52,8 +56,8 @@ export class TakeTestComponent implements OnInit {
   }
 
   captureTestDetails():void{
-   this.questionForm.get('student_id')?.setValue("72447277-31ef-42a3-a376-24562f69ce69");
-   this.questionForm.get('test_id')?.setValue(2);
+   this.questionForm.get('student_id')?.setValue("0527e361-4bfa-4ff5-97c2-3315acdec618");
+   this.questionForm.get('test_id')?.setValue(this.test_id);
   }
 
   addAnswer(selected_option:number, question_id:number, answer:string){
@@ -79,7 +83,10 @@ export class TakeTestComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.questionForm.value)
+    console.log(this.questionForm.value);
+    this.studentAnswerService.postAnswer(this.questionForm.value).subscribe((res)=>{
+        console.log(res);
+    });
   }
 
   

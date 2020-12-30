@@ -1,6 +1,7 @@
 export class Test{
     test_id!:number;
     course_id!:number;
+    course_name!:string;
     test_title!:string;
     test_rules!:string;
     test_date!:string;

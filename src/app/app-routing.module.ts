@@ -8,8 +8,10 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { TestUnavailableComponent } from './pages/test-unavailable/test-unavailable.component';
 import { SuccessfullySubmittedComponent } from './pages/successfully-submitted/successfully-submitted.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { TestCoursesComponent } from './pages/test-courses/test-courses.component';
 
 const routes: Routes = [
+  { path: 'courses', component: TestCoursesComponent },
   { path: 'take-test', component: TakeTestComponent },
   { path: 'view-result', component: ViewResultComponent },
   { path: 'review-test', component: ReviewTestComponent },

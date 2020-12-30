@@ -1,0 +1,38 @@
+<div class="container main">
+    <div class="header mt-3">
+      <h4 class="text-info">Test</h4>
+    </div>
+  
+    <div class="main-table">
+      <table class="table table-striped">
+        <thead class="bg-info">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Course</th>
+            <th scope="col">Test Title</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let test of tests; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{ test.course_name }}
+            </td>
+            <td>
+              {{test.test_title}}
+            </td>
+            <td>
+              <button class="btn btn-outline-info btn-sm" [routerLink]="['/take-test']"  [queryParams]="{id : test.test_id}" fragment="questions"  >
+                Take Test
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="back-button mt-5">
+      <button class="btn btn-info" style="float: right">Go Back</button>
+    </div>
+  </div>
