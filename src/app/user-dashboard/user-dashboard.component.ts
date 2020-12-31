@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseService } from '../service/course.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDashboardComponent implements OnInit {
 
-  constructor() { }
+  totalCourses!:number;
+
+  constructor(private courseService:CourseService) { }
 
   ngOnInit(): void {
+    this.getCourses();
+  }
+
+  getCourses(){
+    this.courseService.getCourses().subscribe(response => {
+        this.totalCourses = response.length
+    });
   }
 
 }
