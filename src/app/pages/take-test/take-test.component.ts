@@ -65,7 +65,7 @@ export class TakeTestComponent implements OnInit {
   }
 
   captureTestDetails():void{
-   this.questionForm.get('student_id')?.setValue("734806d9-722a-4bcd-a563-6627c360a591");
+   this.questionForm.get('student_id')?.setValue("7b38d7d9-75db-4c61-8c8e-2ae80f26a47c");
    this.questionForm.get('test_id')?.setValue(this.test_id);
   }
 
@@ -88,7 +88,7 @@ export class TakeTestComponent implements OnInit {
   }
 
   checkIfStudentHasTakenTest(test_id:number){
-     this.studentAnswerService.getAnswerByStudentIdAndTestId("734806d9-722a-4bcd-a563-6627c360a591",test_id).subscribe(
+     this.studentAnswerService.getAnswerByStudentIdAndTestId("7b38d7d9-75db-4c61-8c8e-2ae80f26a47c",test_id).subscribe(
        (res)=>{
          if(res.length > 1){
            this.isStudentTestTaken = true;        
