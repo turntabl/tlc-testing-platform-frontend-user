@@ -3,13 +3,7 @@
     <p class="text-dark text-center">Are You Sure You Are Done?</p>
   </div>
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-danger mr-3"
-      (click)="activeModal.dismiss('Cross click')"
-    >
-      No
-    </button>
-    <button type="button" class="btn btn-info" (click)="submit()">Yes</button>
+    <button type="button" class="btn btn-danger mr-3" (click)="activeModal.dismiss('Cross click')">No</button>
+    <button type="button" class="btn btn-info" (click)="submit()">{{yes}}</button>
   </div>
 </div>

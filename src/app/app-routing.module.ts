@@ -9,10 +9,14 @@ import { TestUnavailableComponent } from './pages/test-unavailable/test-unavaila
 import { SuccessfullySubmittedComponent } from './pages/successfully-submitted/successfully-submitted.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { TestCoursesComponent } from './pages/test-courses/test-courses.component';
+import { SubmitedComponent } from './pages/submited/submited.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'courses', component: TestCoursesComponent },
   { path: 'take-test', component: TakeTestComponent },
+  { path: 'submited', component: SubmitedComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'view-result', component: ViewResultComponent },
   { path: 'review-test', component: ReviewTestComponent },
   { path: 'user-profile', component: UserProfileComponent },
