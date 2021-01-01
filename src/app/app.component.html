@@ -1,3 +1,4 @@
+<div *ngIf="loginService.isLogin()">
 <div class="wrapper">
   <header class="sticky">
     <div class="container">
@@ -8,7 +9,7 @@
             <a>
               <div class="profile-top">
                 <img
-                  src="https://www.pngkit.com/png/detail/281-2812821_user-account-management-logo-user-icon-png.png"
+                  src="{{ loginService.ok() }}"
                   width="25px"
                   alt="Profile"
                 />
@@ -17,7 +18,7 @@
             <!-- First Tier Drop Down -->
             <ul>
               <li><a routerLink="/user-profile">profile</a></li>
-              <li><a>logout</a></li>
+              <li><a (click)="signOut()">logout</a></li>
             </ul>
           </li>
         </ul>
@@ -27,30 +28,11 @@
 </div>
 
 <div class="center">
-  <button
-  type="button"
-  class="btn btn-outline-info mr-4"
-  routerLink="/user-dashboard"
->
-  Dashboard
-</button>
-  <button
-    type="button"
-    class="btn btn-outline-info mr-4"
-    routerLink="/courses"
-  >
-    Take Test
-  </button>
-  <button
-    type="button"
-    class="btn btn-outline-info mr-4"
-    routerLink="/view-result"
-  >
-    View Result
-  </button>
-  <button type="button" class="btn btn-outline-info" routerLink="/review-test">
-    Review Test
-  </button>
+  <button type="button" class="btn btn-outline-info mr-4" routerLink="/user-dashboard">Dashboard</button>
+  <button type="button" class="btn btn-outline-info mr-4" routerLink="/courses">Take Test</button>
+  <button type="button" class="btn btn-outline-info mr-4" routerLink="/view-result">View Result</button>
+  <button type="button" class="btn btn-outline-info" routerLink="/review-test">Review Test</button>
+</div>
 </div>
 
 <div class="reserved">

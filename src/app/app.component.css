@@ -50,3 +50,7 @@ nav ul ul li {
   display: list-item;
   position: relative;
 }
+
+nav ul ul li a{
+  cursor: pointer;
+}

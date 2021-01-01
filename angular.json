@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "tlc-system-frontend-user"
+  "defaultProject": "tlc-system-frontend-user",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LocalDataService {
-  testTaken: boolean=false;
+  testTaken!: boolean;
   constructor() { }
   
 }

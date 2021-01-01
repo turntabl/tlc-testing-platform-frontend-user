@@ -1,0 +1,11 @@
+body {
+    background-color: lightcyan;
+  }
+  .main .rules {
+    padding: 20px;
+    border: 2px solid lightgray;
+  }
+  .main .rules span {
+    font-size: 20pt;
+    color: teal;
+  }
