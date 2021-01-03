@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from './service/login.service';
+import { TimerService } from './service/timer.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,11 @@ import { LoginService } from './service/login.service';
 export class AppComponent {
   title = 'tlc-system-frontend-user';
 
-  constructor(public loginService: LoginService){}
+  constructor(public loginService: LoginService, public timerService: TimerService){}
+  
+  ngOnInit():void{
+    this.timerService.callTimer();
+  }
 
   signOut(){
     this.loginService.signout();

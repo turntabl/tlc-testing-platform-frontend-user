@@ -49,3 +49,18 @@ body {
   transform: translate(0,-50%);
   text-align: center;
 }
+ .unanswered{
+   float:right;
+   display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+ }
+
+ .unanswered input{
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  cursor: pointer;
+  
+}
