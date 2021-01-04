@@ -24,8 +24,8 @@ export class TimerService {
   constructor() { }
 
     public dateNow = new Date();
-    public TimeStart = new Date('01/03/2021 15:35:00');
-    public TimeEnd = new Date('01/03/2021 15:40:00');
+    public TimeStart = new Date('01/06/2021 10:30:00');
+    public TimeEnd = new Date('01/06/2021 10:35:00');
     milliSecondsInASecond = 1000;
     hoursInADay = 24;
     minutesInAnHour = 60;
@@ -46,7 +46,7 @@ export class TimerService {
       this.minutesToDday = Math.floor((timeStartDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
       this.hoursToDday = Math.floor((timeStartDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
       this.daysToDday = Math.floor((timeStartDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
-      this.timeStart = this.daysToDday +":"+ this.hoursToDday +":"+ this.minutesToDday +":"+ this.secondsToDday;
+      this.timeStart = this.daysToDday +"Day "+ this.hoursToDday +"Hour "+ this.minutesToDday +"Minute "+ this.secondsToDday;
     }
 
     private allocateTimeUnit (timeEndDifference: any) {

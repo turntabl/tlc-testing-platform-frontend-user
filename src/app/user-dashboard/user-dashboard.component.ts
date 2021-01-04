@@ -13,18 +13,6 @@ import { TimerService } from '../service/timer.service';
 export class UserDashboardComponent implements OnInit {
   totalCourses!:number;
   why!: boolean;counter = timer(0, 1000);
-    timeDifference: any;
-    timeDifferences: any;
-    secondsToDday: any;
-    minutesToDday: any;
-    hoursToDday: any;
-    daysToDday: any;
-    clock: any;
-    secondsToDdays: any;
-    minutesToDdays: any;
-    hoursToDdays: any;
-    daysToDdays: any;
-    clocks: any;
     private subscription!: Subscription;
 
   constructor(private courseService:CourseService, private router: Router, private loginService: LoginService, public timerService: TimerService ) { }
