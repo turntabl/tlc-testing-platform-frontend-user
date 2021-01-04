@@ -19,6 +19,7 @@ import { SubmitedComponent } from './pages/submited/submited.component';
 import { LoginComponent } from './login/login.component';
 import { SocialLoginModule, GoogleLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
 import { LoginService } from './service/login.service';
+import { NotpermittedComponent } from './pages/notpermitted/notpermitted.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { LoginService } from './service/login.service';
     TestCoursesComponent,
     SubmitedComponent,
     LoginComponent,
+    NotpermittedComponent,
   ],
   imports: [
     BrowserModule, 
@@ -55,7 +57,7 @@ import { LoginService } from './service/login.service';
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '979127420535-1sgph0dld4g14pnmitv5b75maskv16ki.apps.googleusercontent.com'
+              '979127420535-d8ckuhjieq9i6ja22216rehl1fhk00gi.apps.googleusercontent.com'
             ),
           },
         ],
