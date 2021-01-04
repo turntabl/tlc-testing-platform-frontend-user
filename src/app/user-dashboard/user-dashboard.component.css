@@ -2,64 +2,57 @@
   .top-wrapper{
     max-width: 100%;
   }
-
-  .test-info {
-    background-color: #dad9a1;
-    border-radius: 7px;
-  }
-
-  .test-info-1 {
-    background-color: #99d8d8;
-    border-radius: 7px;
-    margin-top: 30px;
-  }
 }
-
 
 .content {
   background-color: rgb(235, 236, 236);
   border: 2px solid lightgrey;
   padding: 50px;
+  max-width: 80%;
+  margin: auto;
 }
 
 .top-wrapper{
   margin: 0 auto;
   max-width: 600px;
+  min-width: 600px;
 }
 
-.test-info {
+.test-info-1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5c5b2d;
   background-color: #dad9a1;
   padding: 30px;
   border-radius: 7px;
 }
 
-.test-info p {
-  font-size: 20px;
-  font-weight: bold;
-  color: #5c5b2d;
-}
-
-.test-info-1 {
+.test-info-2 {
   background-color: #99d8d8;
   padding: 30px;
-  margin-left: 40px;
   border-radius: 7px;
-}
-.test-info-1 p {
   font-size: 20px;
   font-weight: bold;
   color: #1d5757;
+  margin-left: 1.2em;
 }
 
 .incoming-test {
   background-color: rgb(218, 155, 176);
   padding: 30px;
   margin: 0 auto;
-  border-radius: 10px;
-}
-
-.incoming-test p {
+  border-radius: 7px;
   font-size: 20px;
   font-weight: bold;
   color: rgb(97, 61, 73);
+  min-width: 600px;
+}
+
+.details{
+  float: left;
+  line-height: 60px;
+}
+
+.icon{
+  float: right;
 }
