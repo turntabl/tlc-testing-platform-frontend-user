@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
-import { LocalDataService } from '../service/local-data.service';
 import { LoginService } from '../service/login.service';
 
 @Component({

@@ -9,6 +9,7 @@ import { TimerService } from './service/timer.service';
 })
 export class AppComponent {
   title = 'tlc-system-frontend-user';
+  photo!: string;
 
   constructor(public loginService: LoginService, public timerService: TimerService){}
   

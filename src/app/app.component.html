@@ -8,16 +8,27 @@
           <li *ngIf="timerService.timeStart=='Exams Started'">
             <span class="timer">Time Left: </span><span class="time">{{ timerService.timeEnd }}</span>
           </li>&nbsp;
-          <li>
             <li *ngIf="timerService.timeStart=='Exams has ended'">
               <span class="time-up">{{ timerService.timeEnd }}</span>
             </li>&nbsp;
             <li>
-            <a>
-              <div class="profile-top">
-                <img src="{{ loginService.ok() }}" width="25px" alt="Profile" />
-              </div>
-            </a>
+              <a>
+                <div class="profile-top">
+                  <img
+                    *ngIf="photo == null"
+                    src="https://www.pngkit.com/png/detail/281-2812821_user-account-management-logo-user-icon-png.png"
+                    width="25px"
+                    alt="Profile"
+                  />
+  
+                  <img
+                    *ngIf="photo != null"
+                    src="{{ photo }}"
+                    width="25px"
+                    alt="Profile"
+                  />
+                </div>
+              </a>
             <!-- First Tier Drop Down -->
             <ul>
               <li><a routerLink="/user-profile">profile</a></li>

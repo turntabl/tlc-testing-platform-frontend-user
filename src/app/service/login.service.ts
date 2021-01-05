@@ -12,8 +12,8 @@ export class LoginService {
   id!: any;
   constructor( private authService: SocialAuthService, private http:HttpClient, private router: Router ) { }
 
-
   signout(): void {
+    this.authService.signOut();
     localStorage.removeItem("id");
     this.router.navigate(['login']);
   }

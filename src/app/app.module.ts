@@ -57,7 +57,7 @@ import { NotpermittedComponent } from './pages/notpermitted/notpermitted.compone
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '979127420535-d8ckuhjieq9i6ja22216rehl1fhk00gi.apps.googleusercontent.com'
+              '979127420535-qqq5smupp9v5an16o6phles71f9ihqm2.apps.googleusercontent.com'
             ),
           },
         ],
