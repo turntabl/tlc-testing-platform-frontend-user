@@ -7,9 +7,9 @@ import { SocialAuthService } from 'angularx-social-login';
   providedIn: 'root'
 })
 export class LoginService {
-
   collect!: any;
   id!: any;
+  
   constructor( private authService: SocialAuthService, private http:HttpClient, private router: Router ) { }
 
   signout(): void {
@@ -18,15 +18,17 @@ export class LoginService {
     this.router.navigate(['login']);
   }
 
+  checkLogin(){
+    if (localStorage.getItem("id")!=null) {
+      this.collect = localStorage.getItem("id");
+      return JSON.parse(this.collect).student_id;
+    }
+  }
+
   checkLoginState() {
     if (localStorage.getItem('id') == null) {
       this.router.navigate(['/login']);
     }
-  }
-
-  ok(){
-    this.collect = localStorage.getItem("id");
-    return JSON.parse(this.collect).photo;
   }
 
   isLogin(): boolean{
@@ -37,7 +39,9 @@ export class LoginService {
     }
   }
 
-  hasUser(){
-
+  notLogin(){
+    if (this.checkLogin()==null) {
+      this.router.navigate(['/login']);
+    }
   }
 }
