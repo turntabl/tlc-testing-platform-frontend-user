@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Test } from 'src/app/model/Test';
+import { LoginService } from 'src/app/service/login.service';
 import { StudentAnswerService } from 'src/app/service/student-answer.service';
 import { TestService } from 'src/app/service/test.service';
 
@@ -10,11 +11,16 @@ import { TestService } from 'src/app/service/test.service';
 })
 export class TestCoursesComponent implements OnInit {
 
-  constructor(private testService:TestService, private studentAnswerService:StudentAnswerService) { }
+  constructor(
+    private testService: TestService, 
+    private studentAnswerService: StudentAnswerService,
+    private loginService: LoginService
+    ) { }
 
   tests:Test[]=[];
 
   ngOnInit(): void {
+    this.loginService.notLogin();
         this.getAllCourses();
   }
 

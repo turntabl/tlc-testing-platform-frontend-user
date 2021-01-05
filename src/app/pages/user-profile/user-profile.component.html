@@ -6,16 +6,24 @@
     <!-- Image column -->
     <div class="col-md-5 img">
       <img
-        src="{{ loginService.ok() }}"
-        width="300px"
-        alt="Profile"
-      />
+                    *ngIf="photo == null"
+                    src="https://www.pngkit.com/png/detail/281-2812821_user-account-management-logo-user-icon-png.png"
+                    width="300px"
+                    alt="Profile"
+                  />
+  
+                  <img
+                    *ngIf="photo != null"
+                    src="{{ photo }}"
+                    width="300px"
+                    alt="Profile"
+                  />
     </div>
 
     <!-- Profile Detail Column -->
     <div class="col-md-5 offset-5 user-details text-info">
-      <p>Full Name : Humaidu Ali</p>
-      <p>Email : humaidu.ali@turntabl.io</p>
+      <p>Full Name : {{ name }}</p>
+      <p>Email : {{ email }}</p>
     </div>
   </div>
   <!-- End of row -->

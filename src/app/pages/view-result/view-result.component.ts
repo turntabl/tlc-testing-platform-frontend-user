@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/service/login.service';
 
 interface Result {
   course: string;
@@ -35,7 +36,9 @@ const RESULTS: Result[] = [
 export class ViewResultComponent implements OnInit {
   results = RESULTS;
 
-  constructor() {}
+  constructor(private loginService: LoginService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginService.notLogin();
+  }
 }

@@ -18,13 +18,9 @@ export class UserDashboardComponent implements OnInit {
   constructor(private courseService:CourseService, private router: Router, private loginService: LoginService, public timerService: TimerService ) { }
 
   ngOnInit(): void {
-    this.checkLoginState()
+    this.loginService.notLogin();
     this.getCourses();
     this.timerService.callTimer();
-  }
-
-  checkLoginState() {
-    this.loginService.checkLoginState();
   }
 
   getCourses(){
