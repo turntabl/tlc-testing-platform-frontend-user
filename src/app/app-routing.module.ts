@@ -11,6 +11,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { TestCoursesComponent } from './pages/test-courses/test-courses.component';
 import { SubmitedComponent } from './pages/submited/submited.component';
 import { LoginComponent } from './login/login.component';
+import { NotpermittedComponent } from "./pages/notpermitted/notpermitted.component";
 
 const routes: Routes = [
   { path: 'courses', component: TestCoursesComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'test-unavailable', component: TestUnavailableComponent },
   { path: 'test-submitted', component: SuccessfullySubmittedComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
+  { path: 'notpermitted', component: NotpermittedComponent },
   { path: '', redirectTo: '/user-dashboard', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];

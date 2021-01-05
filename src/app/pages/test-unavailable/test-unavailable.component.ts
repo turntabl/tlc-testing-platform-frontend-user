@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-test-unavailable',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestUnavailableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loginService.notLogin();
   }
 
 }
