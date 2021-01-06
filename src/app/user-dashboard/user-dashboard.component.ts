@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { interval, Subscription, timer } from 'rxjs';
+import {timer } from 'rxjs';
 import { CourseService } from '../service/course.service';
 import { LoginService } from '../service/login.service';
 import { TimerService } from '../service/timer.service';
@@ -18,25 +17,23 @@ export class UserDashboardComponent implements OnInit {
   collect!: any;
   why!: boolean;
   counter = timer(0, 1000);
-  private subscription!: Subscription;
 
   constructor(
     private courseService: CourseService,
     private testTakenService: TestTakenService,
-    private router: Router,
     private loginService: LoginService,
     public timerService: TimerService
   ) {}
 
   ngOnInit(): void {
     this.loginService.notLogin();
-    this.getCourses();
-    this.getAllTestTaken();
     this.timerService.callTimer();
     this.collect = localStorage.getItem('id');
     if (this.collect != null) {
       this.student_id = JSON.parse(this.collect).student_id;
     }
+    this.getAllTestTaken();
+    this.getCourses();
   }
 
   getCourses() {
@@ -48,8 +45,6 @@ export class UserDashboardComponent implements OnInit {
   getAllTestTaken() {
     this.testTakenService.testTaken(this.student_id).subscribe((response) => {
       this.totalTestTaken = response.length;
-
-      console.log(this.totalTestTaken);
     });
   }
 }
