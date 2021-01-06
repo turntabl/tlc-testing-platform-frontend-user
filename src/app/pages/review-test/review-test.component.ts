@@ -1,38 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/service/login.service';
-interface Result {
-  course: string;
-  date: string;
-}
+import { TestTakenService } from 'src/app/service/test-taken.service';
 
-const RESULTS: Result[] = [
-  {
-    course: 'Java',
-
-    date: '11/12/2020',
-  },
-  {
-    course: 'Python',
-
-    date: '20/12/2020',
-  },
-  {
-    course: 'Scala',
-
-    date: '30/12/2020',
-  },
-];
 @Component({
   selector: 'app-review-test',
   templateUrl: './review-test.component.html',
   styleUrls: ['./review-test.component.css'],
 })
 export class ReviewTestComponent implements OnInit {
-  results = RESULTS;
 
-  constructor(private loginService: LoginService) {}
+  allTests:any;
+  collect:any;
+  student_id!:string;
+
+  constructor(
+    private loginService: LoginService,
+    private testTakenService: TestTakenService
+    ) {}
 
   ngOnInit(): void {
     this.loginService.notLogin();
+    this.collect = localStorage.getItem('id');
+    if (this.collect != null) {
+      this.student_id = JSON.parse(this.collect).student_id;
+    }
+    this.getAllTestTaken();
+  }
+
+  getAllTestTaken(){
+    this.testTakenService.testTaken(this.student_id).subscribe((tests)=>{
+      this.allTests = tests;
+    });
   }
 }

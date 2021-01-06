@@ -29,6 +29,7 @@ export class ViewResultComponent implements OnInit {
   getStudentTestResults(){
     this.testResultService.getTestResultsByStudentID(this.student_id).subscribe((results)=>{
         this.studentResults = results;
+        console.log(results);
     });
   }
 }

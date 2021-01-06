@@ -8,21 +8,17 @@
       <thead class="bg-info">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Course</th>
           <th scope="col">Test Title</th>
           <th scope="col">Test Score</th>
           <th scope="col">Grade</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let result of results; index as i">
+        <tr *ngFor="let result of studentResults; index as i">
           <th scope="row">{{ i + 1 }}</th>
-          <td>
-            {{ result.course }}
-          </td>
-          <td>{{ result.score }}</td>
-          <td>{{ result.grade }}</td>
-          <td>{{ result.date }}</td>
+          <td>{{ result.test_title }}</td>
+          <td>{{ result.test_mark }}</td>
+          <td>{{ result.test_grade }}</td>
         </tr>
       </tbody>
     </table>

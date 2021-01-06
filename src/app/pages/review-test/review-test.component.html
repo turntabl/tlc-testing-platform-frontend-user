@@ -8,20 +8,20 @@
       <thead class="bg-info">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Course</th>
+          <th scope="col">Test Title</th>
 
           <th scope="col">Date</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let result of results; index as i">
+        <tr *ngFor="let result of allTests; index as i">
           <th scope="row">{{ i + 1 }}</th>
           <td>
-            {{ result.course }}
+            {{ result.test_title }}
           </td>
 
-          <td>{{ result.date }}</td>
+          <td>{{ result.test_date }}</td>
           <td><button class="btn btn-outline-info btn-sm">Review</button></td>
         </tr>
       </tbody>
