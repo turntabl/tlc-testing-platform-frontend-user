@@ -7,10 +7,20 @@ import { LoginService } from 'src/app/service/login.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  photo!: string;
+  collect!: any;
+  name!: string;
+  email!: string;
 
   constructor(public loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loginService.notLogin();
+    if (localStorage.getItem("id")!=null) {
+      this.collect = localStorage.getItem("id");
+      this.name = JSON.parse(this.collect).first_name +" "+ JSON.parse(this.collect).last_name;
+      this.email = JSON.parse(this.collect).email;
+    }
   }
 
 }

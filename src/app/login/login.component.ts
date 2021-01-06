@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import { User } from '../model/User';
 import { LoginService } from '../service/login.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,32 +11,42 @@ import { LoginService } from '../service/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user: SocialUser;
+  user!: User;
+  googleUser!: SocialUser;
 
-  constructor(private loginService: LoginService, private authService: SocialAuthService, private router: Router) { 
-    this.user = new SocialUser;
-  }
+  constructor(
+    private loginService: LoginService, 
+    private authService: SocialAuthService, 
+    private router: Router,
+    private userService: UserService
+    ) {}
 
   ngOnInit(): void {
-    this.checkLogin();
+    this.checkLoginState();
   }
 
-  checkLogin() {
+  checkLoginState() {
     if (localStorage.getItem('id') != null) {
       this.router.navigate(['/user-dashboard']);
     }
   }
 
   signInWithGoogle(): void {
-      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-      this.authService.authState.subscribe(user => {
-        this.user = user;
-        var getData = {
-          email: this.user.email,
-          photo: this.user.photoUrl,
-        };
-        localStorage.setItem('id', JSON.stringify(getData));
-        this.checkLogin();
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.authService.authState.subscribe(user => {
+      this.googleUser=user;
+      if (this.googleUser!=null) {
+        this.userService.getStudentByEmail(this.googleUser.email).subscribe(response=>{
+        if(response.message=="yes"){
+          this.user = response;
+          localStorage.setItem('id', JSON.stringify(this.user));
+          this.checkLoginState();
+          }else if(response.message=="no"){
+            this.router.navigate(['/notpermitted']);
+          }
       });
+        }
+    });
+    
   }
 }

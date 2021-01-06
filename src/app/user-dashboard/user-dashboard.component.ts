@@ -29,7 +29,7 @@ export class UserDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.checkLoginState();
+    this.loginService.notLogin();
     this.getCourses();
     this.getAllTestTaken();
     this.timerService.callTimer();
@@ -37,10 +37,6 @@ export class UserDashboardComponent implements OnInit {
     if (this.collect != null) {
       this.student_id = JSON.parse(this.collect).student_id;
     }
-  }
-
-  checkLoginState() {
-    this.loginService.checkLoginState();
   }
 
   getCourses() {

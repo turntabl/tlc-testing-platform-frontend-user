@@ -5,6 +5,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Test } from 'src/app/model/Test';
 import { TestQuestion } from 'src/app/model/TestQuestion';
 import { LocalDataService } from 'src/app/service/local-data.service';
+import { LoginService } from 'src/app/service/login.service';
 import { StudentAnswerService } from 'src/app/service/student-answer.service';
 import { TestService } from 'src/app/service/test.service';
 import { TestDoneComponent } from '../../modal/test-done/test-done.component';
@@ -24,9 +25,18 @@ export class TakeTestComponent implements OnInit {
   testDetails:Test= new Test;
   questions:TestQuestion[]=[];
   test_id:number=0;
-  constructor(public modalService: NgbModal, private testService:TestService, private fb:FormBuilder, private route: ActivatedRoute, private studentAnswerService:StudentAnswerService, private localService:LocalDataService) {}
+  constructor(
+    public modalService: NgbModal, 
+    private testService:TestService, 
+    private fb:FormBuilder, 
+    private route: ActivatedRoute, 
+    private studentAnswerService: StudentAnswerService, 
+    private localService:LocalDataService,
+    private loginService: LoginService
+    ) {}
 
   ngOnInit(): void {
+    this.loginService.notLogin();
     this.test_id = +<string>this.route.snapshot.queryParamMap.get('id');
     this.checkIfStudentHasTakenTest(this.test_id);
     console.log(this.isTestTaken + ' ' + this.isStudentTestTaken);
