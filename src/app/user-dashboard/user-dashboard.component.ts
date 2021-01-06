@@ -34,7 +34,9 @@ export class UserDashboardComponent implements OnInit {
     this.getAllTestTaken();
     this.timerService.callTimer();
     this.collect = localStorage.getItem('id');
-    this.student_id = JSON.parse(this.collect).student_id;
+    if (this.collect != null) {
+      this.student_id = JSON.parse(this.collect).student_id;
+    }
   }
 
   getCourses() {
