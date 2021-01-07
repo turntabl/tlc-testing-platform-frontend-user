@@ -25,12 +25,6 @@ export class LoginService {
     }
   }
 
-  checkLoginState() {
-    if (localStorage.getItem('id') == null) {
-      this.router.navigate(['/login']);
-    }
-  }
-
   isLogin(): boolean{
     if ( localStorage.getItem("id")!=null ) {
       return true;
