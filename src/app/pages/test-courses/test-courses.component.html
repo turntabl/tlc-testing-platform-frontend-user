@@ -2,7 +2,6 @@
     <div class="header mt-3">
       <h4 class="text-info">Test</h4>
     </div>
-  
     <div class="main-table">
       <table class="table table-striped">
         <thead class="bg-info">
@@ -23,7 +22,8 @@
               {{test.test_title}}
             </td>
             <td>
-              <button class="btn btn-outline-info btn-sm" [routerLink]="['/take-test']"  [queryParams]="{id : test.test_id}" fragment="questions" >
+              <button class="btn btn-outline-info btn-sm" [routerLink]="['/take-test']"  [queryParams]="{id : test.test_id}" fragment="questions" 
+              (click)="timerService.testIDCollector(test.test_id)">
                 Take Test
               </button>
             </td>

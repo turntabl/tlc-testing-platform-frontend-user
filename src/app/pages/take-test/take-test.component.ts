@@ -8,6 +8,7 @@ import { LocalDataService } from 'src/app/service/local-data.service';
 import { LoginService } from 'src/app/service/login.service';
 import { StudentAnswerService } from 'src/app/service/student-answer.service';
 import { TestService } from 'src/app/service/test.service';
+import { TimerService } from 'src/app/service/timer.service';
 import { TestDoneComponent } from '../../modal/test-done/test-done.component';
 
 @Component({
@@ -25,6 +26,8 @@ export class TakeTestComponent implements OnInit {
   testDetails:Test= new Test;
   questions:TestQuestion[]=[];
   test_id:number=0;
+  test: any;
+  
   constructor(
     public modalService: NgbModal, 
     private testService:TestService, 
@@ -32,7 +35,8 @@ export class TakeTestComponent implements OnInit {
     private route: ActivatedRoute, 
     private studentAnswerService: StudentAnswerService, 
     private localService:LocalDataService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    public timerService: TimerService
     ) {}
 
   ngOnInit(): void {
@@ -44,7 +48,9 @@ export class TakeTestComponent implements OnInit {
       this.getTestDetails();
       this.getTestQuestions();
       this.captureTestDetails();
+
     }
+    this.timerService.callTimer();
   }
 
   openTestDoneModal() {

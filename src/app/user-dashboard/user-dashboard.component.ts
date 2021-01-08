@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {timer } from 'rxjs';
+import { interval, Subscription, timer } from 'rxjs';
 import { CourseService } from '../service/course.service';
 import { LoginService } from '../service/login.service';
 import { TimerService } from '../service/timer.service';
@@ -18,12 +18,7 @@ export class UserDashboardComponent implements OnInit {
   why!: boolean;
   counter = timer(0, 1000);
 
-  constructor(
-    private courseService: CourseService,
-    private testTakenService: TestTakenService,
-    private loginService: LoginService,
-    public timerService: TimerService
-  ) {}
+  constructor(private courseService:CourseService, private loginService: LoginService, public timerService: TimerService ) { }
 
   ngOnInit(): void {
     this.loginService.notLogin();

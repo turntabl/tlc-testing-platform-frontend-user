@@ -1,11 +1,25 @@
-<div class="container main">
+<div class="timer" *ngIf="timerService.checkTimerStatus()">
+  <div class="timer-inner">
+  <span>Test starts in</span><br>
+  <b>{{ timerService.daysToDday }}</b>D&nbsp;&nbsp;
+  <b>{{ timerService.hoursToDday }}</b>H&nbsp;&nbsp;
+  <b>{{ timerService.minutesToDday }}</b>M&nbsp;&nbsp;
+  <b>{{ timerService.secondsToDday }}</b>S
+  </div>
+</div>
+<div class="timer" *ngIf="timerService.checkTimeUp()">
+  <div class="timeEnd-inner">
+  <span>{{ timerService.timeStart }}</span>
+  </div>
+</div>
+<div class="container main" *ngIf="timerService.timerDisplayTest()">
   <div class="header mt-3">
     <h4 class="text-info text-center">{{testDetails.test_title}}</h4>
+    <span></span>
   </div>
-
   <div class="rules mt-3 text-center" *ngIf="testDetails.test_rules && !isStudentTestTaken">
     <p>
-      {{testDetails.test_rules}}
+      {{testDetails.test_rules}}<br>
     </p>
   </div>
 

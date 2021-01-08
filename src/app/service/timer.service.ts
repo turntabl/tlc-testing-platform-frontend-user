@@ -1,10 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
+import { BaseUrl } from './BaseUrl';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TimerService {
+export class TimerService extends BaseUrl{
+    timerStartCollector: any;
     timeStartDifference: any;
     secondsToDday: any;
     minutesToDday: any;
@@ -12,33 +15,45 @@ export class TimerService {
     daysToDday: any;
     public timeStart: any;
     
+    timerEndCollector: any;
     timeEndDifference: any;
     secondsToDdays: any;
     minutesToDdays: any;
     hoursToDdays: any;
     daysToDdays: any;
     public timeEnd: any;
-    
     private subscription!: Subscription;
+    constructor(private http: HttpClient) {
+      super();
+    }
 
-  constructor() { }
+    testIDCollector(id: number){
+      this.http.get<any>((`${this.baseURL}/api/test/get/${id}`)).subscribe(result=>{
+        this.timerStartCollector = new Date(JSON.parse(result.test_date).month+"/"+JSON.parse(result.test_date).day+"/"+JSON.parse(result.test_date).year
+        +" "+JSON.parse(result.test_time_start).hour+":"+JSON.parse(result.test_time_start).minute);
+        this.timerEndCollector = new Date(JSON.parse(result.test_date).month+"/"+JSON.parse(result.test_date).day+"/"+JSON.parse(result.test_date).year
+        +" "+JSON.parse(result.test_time_end).hour+":"+JSON.parse(result.test_time_end).minute);
+      });
+    }
 
     public dateNow = new Date();
-    public TimeStart = new Date('01/06/2021 10:30:00');
-    public TimeEnd = new Date('01/06/2021 10:35:00');
     milliSecondsInASecond = 1000;
     hoursInADay = 24;
     minutesInAnHour = 60;
     SecondsInAMinute  = 60;
 
     private getStartTimeDifference () {
-      this.timeStartDifference = this.TimeStart.getTime() - new  Date().getTime();
+      if(this.timerStartCollector!=null){
+      this.timeStartDifference = this.timerStartCollector.getTime() - new  Date().getTime();
       this.allocateTimeUnits(this.timeStartDifference);
+      }
     }
 
     private getEndTimeDifference() {
-      this.timeEndDifference = this.TimeEnd.getTime() - new  Date().getTime();
+      if(this.timerEndCollector!=null){
+      this.timeEndDifference = this.timerEndCollector.getTime() - new  Date().getTime();
       this.allocateTimeUnit(this.timeEndDifference);
+      }
     }
 
     private allocateTimeUnits (timeStartDifference: any) {
@@ -46,7 +61,7 @@ export class TimerService {
       this.minutesToDday = Math.floor((timeStartDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
       this.hoursToDday = Math.floor((timeStartDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
       this.daysToDday = Math.floor((timeStartDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
-      this.timeStart = this.daysToDday +"Day "+ this.hoursToDday +"Hour "+ this.minutesToDday +"Minute "+ this.secondsToDday;
+      this.timeStart = this.daysToDday +"Day "+ this.hoursToDday +"Hour "+ this.minutesToDday +"Minute "+ this.secondsToDday+"Second";
     }
 
     private allocateTimeUnit (timeEndDifference: any) {
@@ -74,5 +89,26 @@ export class TimerService {
         this.getStartTimeDifference();
        }
      });
+  }
+  checkTimerStatus(){
+    if (this.timeStart=="Exams Started" || this.timeStart=="Exams has ended") {
+      return false;
+    }else{
+      return true
+    }
+  }
+  timerDisplayTest(){
+    if (this.timeStart=="Exams Started") {
+      return true;
+    }else{
+      return false;
+    }
+  }
+  checkTimeUp(){
+    if (this.timeStart=="Exams has ended") {
+      return true;
+    }else{
+      return false
+    }
   }
 }
