@@ -32,7 +32,7 @@ export class TimerService extends BaseUrl{
         this.timerStartCollector = new Date(JSON.parse(result.test_date).month+"/"+JSON.parse(result.test_date).day+"/"+JSON.parse(result.test_date).year
         +" "+JSON.parse(result.test_time_start).hour+":"+JSON.parse(result.test_time_start).minute);
         this.timerEndCollector = new Date(JSON.parse(result.test_date).month+"/"+JSON.parse(result.test_date).day+"/"+JSON.parse(result.test_date).year
-        +" "+JSON.parse(result.test_time_start).hour+":"+JSON.parse(result.test_time_start).minute);
+        +" "+JSON.parse(result.test_time_end).hour+":"+JSON.parse(result.test_time_end).minute);
       });
     }
 
@@ -91,10 +91,17 @@ export class TimerService extends BaseUrl{
      });
   }
   checkTimerStatus(){
-    if (this.timeStart!="Exams Started" || this.timeStart!="Exams has ended") {
+    if (this.timeStart=="Exams Started" || this.timeStart=="Exams has ended") {
+      return false;
+    }else{
+      return true
+    }
+  }
+  timerDisplayTest(){
+    if (this.timeStart=="Exams Started") {
       return true;
     }else{
-      return false
+      return false;
     }
   }
   checkTimeUp(){

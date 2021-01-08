@@ -12,7 +12,7 @@
   <span>{{ timerService.timeStart }}</span>
   </div>
 </div>
-<div class="container main" *ngIf="!timerService.checkTimerStatus()">
+<div class="container main" *ngIf="timerService.timerDisplayTest()">
   <div class="header mt-3">
     <h4 class="text-info text-center">{{testDetails.test_title}}</h4>
     <span></span>
