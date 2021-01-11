@@ -6,6 +6,7 @@ import { Test } from 'src/app/model/Test';
 import { TestQuestion } from 'src/app/model/TestQuestion';
 import { LocalDataService } from 'src/app/service/local-data.service';
 import { LoginService } from 'src/app/service/login.service';
+import { SnippetService } from 'src/app/service/snippet.service';
 import { StudentAnswerService } from 'src/app/service/student-answer.service';
 import { TestService } from 'src/app/service/test.service';
 import { TimerService } from 'src/app/service/timer.service';
@@ -36,7 +37,8 @@ export class TakeTestComponent implements OnInit {
     private studentAnswerService: StudentAnswerService, 
     private localService:LocalDataService,
     private loginService: LoginService,
-    public timerService: TimerService
+    public timerService: TimerService,
+    public snippetService: SnippetService
     ) {}
 
   ngOnInit(): void {
