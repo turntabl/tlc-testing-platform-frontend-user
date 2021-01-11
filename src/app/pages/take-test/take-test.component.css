@@ -96,3 +96,12 @@ body {
   border-style: solid;
   border-width: 2px;
 }
+
+pre{
+  background-color: rgb(36, 30, 46);
+  color: rgb(215, 136, 196);
+  padding: 2em;
+  border-radius: 5px;
+  width: 60%;
+  overflow: scroll;
+}

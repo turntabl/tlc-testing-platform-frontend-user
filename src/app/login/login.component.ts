@@ -13,6 +13,7 @@ import { UserService } from '../service/user.service';
 export class LoginComponent implements OnInit {
   user!: User;
   googleUser!: SocialUser;
+  loader: boolean = false;
 
   constructor(
     private loginService: LoginService, 
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe(user => {
       this.googleUser=user;
       if (this.googleUser!=null) {
+        this.loader = true;
         this.userService.getStudentByEmail(this.googleUser.email).subscribe(response=>{
         if(response.message=="yes"){
           this.user = response;

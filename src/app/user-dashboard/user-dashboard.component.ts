@@ -18,7 +18,12 @@ export class UserDashboardComponent implements OnInit {
   why!: boolean;
   counter = timer(0, 1000);
 
-  constructor(private courseService:CourseService, private loginService: LoginService, public timerService: TimerService, private testTakenService:TestTakenService ) { }
+  constructor(
+    private courseService:CourseService, 
+    private loginService: LoginService, 
+    public timerService: TimerService, 
+    private testTakenService:TestTakenService
+    ) { }
 
   ngOnInit(): void {
     this.loginService.notLogin();
