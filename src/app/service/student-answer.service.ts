@@ -14,7 +14,7 @@ export class StudentAnswerService extends BaseUrl {
 
   public postAnswer(answer: StudentAnswer): Observable<any> {
     return this.httpClient.post<StudentAnswer>(
-      `http://localhost:8080/api/test-answer`,
+      `${this.baseURL}/api/test-answer`,
       answer
     );
   }

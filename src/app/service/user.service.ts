@@ -1,14 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseUrl } from './BaseUrl';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService extends BaseUrl{
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    super();
+  }
 
   getStudentByEmail(studentEmail: string){
-    return this.http.get<any>("https://tlc-testing.herokuapp.com/api/student/find/"+studentEmail);
+    return this.http.get<any>(`${this.baseURL}/api/student/find/`+studentEmail);
   }
 }
