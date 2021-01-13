@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { User } from '../model/User';
+import { AuthService } from '../service/auth.service';
 import { LoginService } from '../service/login.service';
 import { UserService } from '../service/user.service';
 
@@ -13,42 +14,19 @@ import { UserService } from '../service/user.service';
 export class LoginComponent implements OnInit {
   user!: User;
   googleUser!: SocialUser;
-  loader: boolean = false;
 
   constructor(
-    private loginService: LoginService, 
-    private authService: SocialAuthService, 
-    private router: Router,
-    private userService: UserService
+    private authService:AuthService
     ) {}
 
   ngOnInit(): void {
-    this.checkLoginState();
   }
 
-  checkLoginState() {
-    if (localStorage.getItem('id') != null) {
-      this.router.navigate(['/user-dashboard']);
-    }
+  get loader(){
+    return this.authService.loader;
   }
 
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.authService.authState.subscribe(user => {
-      this.googleUser=user;
-      if (this.googleUser!=null) {
-        this.loader = true;
-        this.userService.getStudentByEmail(this.googleUser.email).subscribe(response=>{
-        if(response.message=="yes"){
-          this.user = response;
-          localStorage.setItem('id', JSON.stringify(this.user));
-          this.checkLoginState();
-          }else if(response.message=="no"){
-            this.router.navigate(['/notpermitted']);
-          }
-      });
-        }
-    });
-    
-  }
+  onSubmit() {
+    this.authService.signInWithGoogle();
+}
 }

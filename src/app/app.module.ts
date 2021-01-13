@@ -20,6 +20,8 @@ import { LoginComponent } from './login/login.component';
 import { SocialLoginModule, GoogleLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
 import { LoginService } from './service/login.service';
 import { NotpermittedComponent } from './pages/notpermitted/notpermitted.component';
+import { AuthService } from './service/auth.service';
+import { AuthGuard } from './service/auth.guard';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { NotpermittedComponent } from './pages/notpermitted/notpermitted.compone
         ],
       } as SocialAuthServiceConfig,
     },
+    AuthService,
+    AuthGuard,
     LoginService,
   ],
   bootstrap: [AppComponent],

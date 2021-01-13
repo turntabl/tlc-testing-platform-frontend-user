@@ -12,20 +12,21 @@ import { TestCoursesComponent } from './pages/test-courses/test-courses.componen
 import { SubmitedComponent } from './pages/submited/submited.component';
 import { LoginComponent } from './login/login.component';
 import { NotpermittedComponent } from "./pages/notpermitted/notpermitted.component";
+import { AuthGuard } from './service/auth.guard';
 
 const routes: Routes = [
-  { path: 'courses', component: TestCoursesComponent },
-  { path: 'take-test', component: TakeTestComponent },
-  { path: 'submited', component: SubmitedComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'view-result', component: ViewResultComponent },
-  { path: 'review-test', component: ReviewTestComponent },
-  { path: 'user-profile', component: UserProfileComponent },
-  { path: 'test-unavailable', component: TestUnavailableComponent },
-  { path: 'test-submitted', component: SuccessfullySubmittedComponent },
-  { path: 'user-dashboard', component: UserDashboardComponent },
+  { path: 'courses', component: TestCoursesComponent, canActivate: [AuthGuard] },
+  { path: 'take-test', component: TakeTestComponent, canActivate: [AuthGuard] },
+  { path: 'submited', component: SubmitedComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent},
+  { path: 'view-result', component: ViewResultComponent, canActivate: [AuthGuard] },
+  { path: 'review-test', component: ReviewTestComponent, canActivate: [AuthGuard] },
+  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
+  { path: 'test-unavailable', component: TestUnavailableComponent, canActivate: [AuthGuard] },
+  { path: 'test-submitted', component: SuccessfullySubmittedComponent, canActivate: [AuthGuard] },
+  { path: 'user-dashboard', component: UserDashboardComponent, canActivate: [AuthGuard] },
   { path: 'notpermitted', component: NotpermittedComponent },
-  { path: '', redirectTo: '/user-dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/user-dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
 
