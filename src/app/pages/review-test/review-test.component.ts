@@ -12,6 +12,7 @@ export class ReviewTestComponent implements OnInit {
   allTests:any;
   collect:any;
   student_id!:string;
+  empty!: number;
 
   constructor(
     private loginService: LoginService,
@@ -30,6 +31,7 @@ export class ReviewTestComponent implements OnInit {
   getAllTestTaken(){
     this.testTakenService.testTaken(this.student_id).subscribe((tests)=>{
       this.allTests = tests;
+      this.empty = this.allTests.length;      
     });
   }
 }

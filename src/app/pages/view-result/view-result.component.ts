@@ -11,6 +11,7 @@ export class ViewResultComponent implements OnInit {
  studentResults:any;
  collect:any;
  student_id!:string;
+ empty!: number;
 
   constructor(
     private loginService: LoginService,
@@ -29,7 +30,7 @@ export class ViewResultComponent implements OnInit {
   getStudentTestResults(){
     this.testResultService.getTestResultsByStudentID(this.student_id).subscribe((results)=>{
         this.studentResults = results;
-        console.log(results);
+        this.empty = this.studentResults.length;
     });
   }
 }

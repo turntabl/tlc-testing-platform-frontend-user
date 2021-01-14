@@ -47,6 +47,11 @@ nav ul a {
     height: 25px;
     background-color:    rgb(233, 233, 233);
 }
+.emptyCan{
+    max-width:100%;
+    padding-top: 5em;
+    text-align: center;
+  }
 /* nav ul a:hover {
     background-color: rgb(20, 20, 89);
 } */
