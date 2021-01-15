@@ -1,4 +1,7 @@
-<div class="container main">
+<div class="emptyCan" *ngIf="empty==0">
+  <img src="../../../assets/empty.png" alt="" width="300px">
+</div>
+<div class="container main" *ngIf="empty!=0">
   <div class="header mt-3">
     <h4 class="text-info">Review Test</h4>
   </div>
@@ -26,9 +29,5 @@
         </tr>
       </tbody>
     </table>
-  </div>
-
-  <div class="back-button mt-5">
-    <button class="btn btn-info" style="float: right">Go Back</button>
   </div>
 </div>

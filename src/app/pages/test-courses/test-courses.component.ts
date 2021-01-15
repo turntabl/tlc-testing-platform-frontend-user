@@ -25,6 +25,7 @@ export class TestCoursesComponent implements OnInit  {
     student_id!: string;
     collect!: any;
     tests:Test[]=[];
+    empty!: number;
 
   ngOnInit(): void {
     this.loginService.notLogin();
@@ -40,6 +41,7 @@ export class TestCoursesComponent implements OnInit  {
   getAllCourses(){
     this.testService.getAllTests().subscribe( (response) => {
       this.tests = response;
+      this.empty = this.tests.length;
     });
   }
 
