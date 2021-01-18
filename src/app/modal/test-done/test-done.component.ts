@@ -28,7 +28,7 @@ export class TestDoneComponent implements OnInit {
     this.studentAnswerService.postAnswer(this.data).subscribe((res)=>{
       if (JSON.parse(JSON.stringify(res)).message=="success") {
         this.yes="Yes"
-        this.activeModal.dismiss('Cross click');
+        this.activeModal.dismiss('');
         this.router.navigate(['submited']);
       }
     });
