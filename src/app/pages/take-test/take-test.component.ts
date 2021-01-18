@@ -28,6 +28,8 @@ export class TakeTestComponent implements OnInit {
   questions:TestQuestion[]=[];
   test_id:number=0;
   test: any;
+  student_id:string = '';
+  collect:any;
   
   constructor(
     public modalService: NgbModal, 
@@ -45,7 +47,10 @@ export class TakeTestComponent implements OnInit {
     this.loginService.notLogin();
     this.test_id = +<string>this.route.snapshot.queryParamMap.get('id');
     this.checkIfStudentHasTakenTest(this.test_id);
-    console.log(this.isTestTaken + ' ' + this.isStudentTestTaken);
+    this.collect = localStorage.getItem('id');
+    if (this.collect != null) {
+      this.student_id = JSON.parse(this.collect).student_id;
+    }
     if(!this.isTestTaken || !this.isStudentTestTaken){
       this.getTestDetails();
       this.getTestQuestions();
@@ -83,7 +88,7 @@ export class TakeTestComponent implements OnInit {
   }
 
   captureTestDetails():void{
-   this.questionForm.get('student_id')?.setValue("7b38d7d9-75db-4c61-8c8e-2ae80f26a47c");
+   this.questionForm.get('student_id')?.setValue(this.student_id);
    this.questionForm.get('test_id')?.setValue(this.test_id);
   }
 
@@ -106,7 +111,7 @@ export class TakeTestComponent implements OnInit {
   }
 
   checkIfStudentHasTakenTest(test_id:number){
-     this.studentAnswerService.getAnswerByStudentIdAndTestId("7b38d7d9-75db-4c61-8c8e-2ae80f26a47c",test_id).subscribe(
+     this.studentAnswerService.getAnswerByStudentIdAndTestId(this.student_id,test_id).subscribe(
        (res)=>{
          if(res.length > 1){
            this.isStudentTestTaken = true;        
