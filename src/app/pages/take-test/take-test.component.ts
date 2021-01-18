@@ -50,12 +50,12 @@ export class TakeTestComponent implements OnInit {
     this.collect = localStorage.getItem('id');
     if (this.collect != null) {
       this.student_id = JSON.parse(this.collect).student_id;
+      this.captureTestDetails();
+
     }
     if(!this.isTestTaken || !this.isStudentTestTaken){
       this.getTestDetails();
       this.getTestQuestions();
-      this.captureTestDetails();
-
     }
     this.timerService.callTimer();
   }
@@ -64,9 +64,7 @@ export class TakeTestComponent implements OnInit {
     const modalRef = this.modalService.open(TestDoneComponent);
     modalRef.componentInstance.data = this.questionForm.value;
     modalRef.result.then(res=>{
-      console.log("CloseButton", res)
     },dismiss=>{
-      console.log("Cross Button",dismiss)
     })
   }
 

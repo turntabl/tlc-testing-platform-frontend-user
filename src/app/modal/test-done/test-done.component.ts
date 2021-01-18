@@ -21,7 +21,6 @@ export class TestDoneComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    console.log(this.data)
   }
 
   submit(){
