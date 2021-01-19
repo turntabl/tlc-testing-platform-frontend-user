@@ -18,7 +18,7 @@ import { TestDoneComponent } from '../../modal/test-done/test-done.component';
   styleUrls: ['./take-test.component.css'],
 })
 export class TakeTestComponent implements OnInit {
-  isStudentTestTaken:boolean=false;
+  isStudentTestTaken!:boolean;
   questionForm : FormGroup = new FormGroup({
     student_id: new FormControl(''),
     test_id:new FormControl(''),
@@ -52,7 +52,7 @@ export class TakeTestComponent implements OnInit {
       this.captureTestDetails();
 
     }
-    this.checkIfStudentHasTakenTest();
+    this.checkIfStudentHasTakenTest();    
     if(!this.isTestTaken || !this.isStudentTestTaken){
       this.getTestDetails();
       this.getTestQuestions();
@@ -109,10 +109,13 @@ export class TakeTestComponent implements OnInit {
   }
 
   checkIfStudentHasTakenTest(){
-     this.studentAnswerService.getAnswerByStudentIdAndTestId(this.student_id,this.test_id).subscribe(
+     this.studentAnswerService.getStudentTestRecord(this.student_id,this.test_id).subscribe(
        (res)=>{
+         console.log(res)
          if(res){
            this.isStudentTestTaken = true;        
+         }else{
+          this.isStudentTestTaken = false;
          }
        }
      );
