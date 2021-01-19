@@ -52,7 +52,7 @@ export class TakeTestComponent implements OnInit {
       this.captureTestDetails();
 
     }
-    this.checkIfStudentHasTakenTest();
+    this.checkIfStudentHasTakenTest();    
     if(!this.isTestTaken || !this.isStudentTestTaken){
       this.getTestDetails();
       this.getTestQuestions();
@@ -109,8 +109,9 @@ export class TakeTestComponent implements OnInit {
   }
 
   checkIfStudentHasTakenTest(){
-     this.studentAnswerService.getAnswerByStudentIdAndTestId(this.student_id,this.test_id).subscribe(
+     this.studentAnswerService.getStudentTestRecord(this.student_id,this.test_id).subscribe(
        (res)=>{
+         console.log(res)
          if(res){
            this.isStudentTestTaken = true;        
          }else{
