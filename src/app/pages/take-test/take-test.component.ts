@@ -111,7 +111,6 @@ export class TakeTestComponent implements OnInit {
   checkIfStudentHasTakenTest(){
      this.studentAnswerService.getStudentTestRecord(this.student_id,this.test_id).subscribe(
        (res)=>{
-         console.log(res)
          if(res){
            this.isStudentTestTaken = true;        
          }else{
