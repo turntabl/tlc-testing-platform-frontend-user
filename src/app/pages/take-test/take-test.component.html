@@ -12,60 +12,68 @@
   <span>{{ timerService.timeStart }}</span>
   </div>
 </div>
-<div class="container main" *ngIf="timerService.timerDisplayTest()">
-  <div class="header mt-3">
-    <h4 class="text-info text-center">{{testDetails.test_title}}</h4>
-    <span></span>
-  </div>
-  <div class="rules mt-3 text-center" *ngIf="testDetails.test_rules && !isStudentTestTaken">
-    <p>
-      {{testDetails.test_rules}}<br>
-    </p>
-  </div>
-
-<div [formGroup]="questionForm" *ngIf="!isStudentTestTaken || isTestTaken; else TestTaken">
-  <!-- Questions div -->
-  <input type="text" formControlName="student_id" hidden>
-  <input type="text" formControlName="test_id" hidden>
-  <div class="main-question-div mt-5 mb-5" *ngFor="let question of questions; let i=index;">
-    <div class="questions">
-      <p>
-        <span class="number mr-2">{{i + 1}}.</span> 
-          {{snippetService.displayText(question.question)}}
-      </p>
-      <pre>
-        {{ snippetService.displayCode(question.question) }}
-       </pre>
-      <hr>
-    </div>
-        <div *ngFor="let option of question.options;">
-          <div formArrayName="answers">
-            <div *ngFor="let  answer of answers.controls;  let i=index"></div>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="{{question.questionId}}" (change)="addAnswer(option.optionId, question.questionId, option.option)"/>
-            <label class="form-check-label">{{option.option}}</label>
-          </div>
-        </div>
-        <div class="unanswered">
-          <input type="checkbox">
-        </div>
-  </div>
-  
-</div>
-
-<ng-template #TestTaken>
+<div *ngIf="isStudentTestTaken; else showTest">
   <div id="box-three">
     <p>Test Taken!</p>
   </div>
+</div>
+<ng-template #showTest>
+  <div class="container main" *ngIf="timerService.timerDisplayTest()">
+    <div class="header mt-3">
+      <h4 class="text-info text-center">{{testDetails.test_title}}</h4>
+      <span></span>
+    </div>
+    <div class="rules mt-3 text-center" *ngIf="testDetails.test_rules && !isStudentTestTaken">
+      <p>
+        {{testDetails.test_rules}}<br>
+      </p>
+    </div>
+  
+  <div [formGroup]="questionForm" *ngIf="!isStudentTestTaken || isTestTaken; else TestTaken">
+    <!-- Questions div -->
+    <input type="text" formControlName="student_id" hidden>
+    <input type="text" formControlName="test_id" hidden>
+    <div class="main-question-div mt-5 mb-5" *ngFor="let question of questions; let i=index;">
+      <div class="questions">
+        <p>
+          <span class="number mr-2">{{i + 1}}.</span> 
+            {{snippetService.displayText(question.question)}}
+        </p>
+        <pre>
+          {{ snippetService.displayCode(question.question) }}
+         </pre>
+        <hr>
+      </div>
+          <div *ngFor="let option of question.options;">
+            <div formArrayName="answers">
+              <div *ngFor="let  answer of answers.controls;  let i=index"></div>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="{{question.questionId}}" (change)="addAnswer(option.optionId, question.questionId, option.option)"/>
+              <label class="form-check-label">{{option.option}}</label>
+            </div>
+          </div>
+          <div class="unanswered">
+            <input type="checkbox">
+          </div>
+    </div>
+    
+  </div>
+  
+  <ng-template #TestTaken>
+    <div id="box-three">
+      <p>Test Taken!</p>
+    </div>
+  </ng-template>
+  
+    <div class="offset-5 submit-button" *ngIf="!isStudentTestTaken || isTestTaken">
+      <button class="btn btn-outline-info" (click)="openTestDoneModal()">
+        Submit Test
+      </button>
+    </div>
+  </div>
 </ng-template>
 
-  <div class="offset-5 submit-button" *ngIf="!isStudentTestTaken || isTestTaken">
-    <button class="btn btn-outline-info" (click)="openTestDoneModal()">
-      Submit Test
-    </button>
-  </div>
-</div>
 
 
 
