@@ -27,4 +27,13 @@ export class StudentAnswerService extends BaseUrl {
       `${this.baseURL}/api/answers/get-by-student/${test_id}/${student_id}`
     );
   }
+
+  public getStudentTestRecord(
+    student_id: string,
+    test_id: number
+  ): Observable<any> {
+    return this.httpClient.get<any>(
+      `${this.baseURL}/api/test-taken/test/${test_id}/${student_id}`
+    );
+  }
 }
