@@ -46,13 +46,13 @@ export class TakeTestComponent implements OnInit {
   ngOnInit(): void {
     this.loginService.notLogin();
     this.test_id = +<string>this.route.snapshot.queryParamMap.get('id');
-    this.checkIfStudentHasTakenTest(this.test_id);
     this.collect = localStorage.getItem('id');
     if (this.collect != null) {
       this.student_id = JSON.parse(this.collect).student_id;
       this.captureTestDetails();
 
     }
+    this.checkIfStudentHasTakenTest();
     if(!this.isTestTaken || !this.isStudentTestTaken){
       this.getTestDetails();
       this.getTestQuestions();
@@ -108,10 +108,10 @@ export class TakeTestComponent implements OnInit {
     return this.questionForm.get('answers') as FormArray;
   }
 
-  checkIfStudentHasTakenTest(test_id:number){
-     this.studentAnswerService.getAnswerByStudentIdAndTestId(this.student_id,test_id).subscribe(
+  checkIfStudentHasTakenTest(){
+     this.studentAnswerService.getAnswerByStudentIdAndTestId(this.student_id,this.test_id).subscribe(
        (res)=>{
-         if(res.length > 1){
+         if(res){
            this.isStudentTestTaken = true;        
          }
        }
