@@ -10,8 +10,8 @@ export class SnippetService {
 
   displayCode(code: string){
     if(code!=null){
-    var firstIndex = code.indexOf("-");
-    var lastIndex = code.lastIndexOf("-");
+    var firstIndex = code.indexOf("`");
+    var lastIndex = code.lastIndexOf("`");
     var cutOutCode = code.slice(firstIndex, lastIndex);
     this.codeCutout = cutOutCode;
     return cutOutCode.slice(1);
