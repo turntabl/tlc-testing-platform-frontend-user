@@ -34,4 +34,8 @@ export class ReviewTestComponent implements OnInit {
       this.empty = this.allTests.length;      
     });
   }
+  
+  dateConverter(date: string){
+    return JSON.parse(date).day+"/"+JSON.parse(date).month+"/"+JSON.parse(date).year;
+  }
 }
