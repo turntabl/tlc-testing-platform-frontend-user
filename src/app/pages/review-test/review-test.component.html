@@ -1,32 +1,5 @@
-<div class="emptyCan" *ngIf="empty==0">
-  <img src="../../../assets/empty.png" alt="" width="300px">
-</div>
-<div class="container main" *ngIf="empty!=0">
-  <div class="header mt-3">
-    <h4 class="text-info">Review Test</h4>
-  </div>
-
-  <div class="main-table">
-    <table class="table table-striped">
-      <thead class="bg-info">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Test Title</th>
-
-          <th scope="col">Date</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let result of allTests; index as i">
-          <th scope="row">{{ i + 1 }}</th>
-          <td>
-            {{ result.test_title }}
-          </td>
-          <td>{{  dateConverter(result.test_date) }}</td>
-          <td><button class="btn btn-outline-info btn-sm">Review</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="container">
+  <div class="main-content-wrapper">
+    <img src="../../../assets/coming_soon.png" style="margin:80px 0px 0px 230px; width: 600px; height: 300px;" alt />
+    </div>
 </div>
